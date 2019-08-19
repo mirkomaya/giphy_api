@@ -12,13 +12,15 @@ $(document).ready(function () {
 
             var button = $("<button>");
 
+            button.addClass("topic");
+
             button.attr("data-name", topics[i]);
 
             button.text(topics[i]);
 
             $("#topicButtons").append(button);
 
-            console.log(button.attr("data-name"));
+            // console.log(button.attr("data-name"));
 
         }
 
@@ -27,24 +29,13 @@ $(document).ready(function () {
     // calls renderButtons function.
     renderButtons();
 
-    
-    $("#topicButtons").on("click", function (event) {
+    $("button").on("click", function (event) {
 
         event.preventDefault();
 
-        var picTop = button.attr("data-name");
-
-        console.log(picTop);
+        var picTop = $(this).attr("data-name");
 
     })
-
-
-
-
-
-
-
-
 
 
 
