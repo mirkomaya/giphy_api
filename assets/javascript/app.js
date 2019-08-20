@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // create an array of strings to store interests.
-    var topics = ["dragon ball z", "space", "music", "futbol", "johnny depp"];
+    var topics = ["Dragon Ball Z", "Space", "Music", "Futbol", "Johnny Depp"];
 
     // create a function to create buttons from topics array.
     function renderButtons() {
@@ -37,7 +37,7 @@ $(document).ready(function () {
 
         // console.log(topicName);
 
-        var giphyURL = "http://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=CAXpgrXLq4SOSD1tjVIMhK4qHW7Mmxwv&limit=10"
+        var giphyURL = "https://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=CAXpgrXLq4SOSD1tjVIMhK4qHW7Mmxwv&limit=10"
 
         // console.log(giphyURL);
 
@@ -57,15 +57,23 @@ $(document).ready(function () {
 
                 var imageURL = responseArray[j].images.original_still.url;
 
+                var imageRating = (responseArray[j].rating);
+
                 // console.log(imageURL);
 
-                var topicImage = $("<img>");
+                // var topicDiv = $("<div>");
 
-                topicImage.attr("src", imageURL);
+                var img = $("<img>")
 
-                topicImage.attr("alt", "" + topicName + " image");
+                img.attr("src", imageURL);
 
-                $("#topicImages").prepend(topicImage);
+                img.attr("alt", "" + topicName + " image");
+
+                var p = $("<p>");
+
+                p.text("Rating: " + imageRating.toUpperCase());
+
+                $("#topicImages").prepend(img, p);
 
 
             }
