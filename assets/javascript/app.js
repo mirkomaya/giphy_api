@@ -33,15 +33,49 @@ $(document).ready(function () {
 
         event.preventDefault();
 
-        var picTop = $(this).attr("data-name");
+        var topicName = $(this).attr("data-name");
+
+        // console.log(topicName);
+
+        var giphyURL = "http://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=CAXpgrXLq4SOSD1tjVIMhK4qHW7Mmxwv&limit=10"
+
+        // console.log(giphyURL);
+
+        $.ajax({
+            url: giphyURL,
+            method: "GET"
+        })
+        .then(function(response) {
+
+            console.log(response);
+
+            var responseArray = response.data;
+
+            console.log(responseArray.length);
+
+            for (var j = 0; j < responseArray.length; j++) {
+
+
+                // get images
+
+                var imageURL = responseArray[i].url;
+
+                console.log(imageURL);
+
+            }
+
+            // var imageURL = response.data[0];
+
+            // console.log(imageURL);
+
+
+
+        })
+
 
     })
 
 
-
-
-
-
-});
+})
 
 
