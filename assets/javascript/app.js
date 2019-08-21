@@ -33,6 +33,8 @@ $(document).ready(function () {
 
         event.preventDefault();
 
+        $("#topicImages").empty();
+
         var topicName = $(this).attr("data-name");
 
         // console.log(topicName);
@@ -45,41 +47,43 @@ $(document).ready(function () {
             url: giphyURL,
             method: "GET"
         })
-        .then(function(response) {
+            .then(function (response) {
 
-            // console.log(response);
+                console.log(response);
 
-            var responseArray = response.data;
+                var responseArray = response.data;
 
-            // console.log(responseArray);
+                // console.log(responseArray);
 
-            for (var j = 0; j < responseArray.length; j++) {
+                for (var j = 0; j < responseArray.length; j++) {
 
-                var imageURL = responseArray[j].images.original_still.url;
+                    var imageStill = responseArray[j].images.original_still.url;
 
-                var imageRating = (responseArray[j].rating);
+                    var imageRating = (responseArray[j].rating);
 
-                // console.log(imageURL);
+                    // console.log(imageStill);
 
-                // var topicDiv = $("<div>");
+                    // var topicDiv = $("<div>");
 
-                var img = $("<img>")
+                    var img = $("<img>")
 
-                img.attr("src", imageURL);
+                    img.attr("src", imageStill);
 
-                img.attr("alt", "" + topicName + " image");
+                    // img.attr()
 
-                var p = $("<p>");
+                    img.attr("alt", "" + topicName + " image");
 
-                p.text("Rating: " + imageRating.toUpperCase());
+                    var p = $("<p>");
 
-                $("#topicImages").prepend(img, p);
+                    p.text("Rating: " + imageRating.toUpperCase());
+
+                    $("#topicImages").prepend(img, p);
 
 
-            }
+                }
 
 
-        })
+            })
 
 
     })
