@@ -59,17 +59,21 @@ $(document).ready(function () {
 
                     var imageStill = responseArray[j].images.original_still.url;
 
-                    var imageRating = (responseArray[j].rating);
+                    var imageAnimate = responseArray[j].url;
 
-                    // console.log(imageStill);
+                    var imageRating = responseArray[j].rating;
 
-                    // var topicDiv = $("<div>");
+                    var img = $("<img>");
 
-                    var img = $("<img>")
+                    img.addClass("gif");
 
                     img.attr("src", imageStill);
 
-                    // img.attr()
+                    img.attr("data-state", "still");
+
+                    img.attr("data-still", imageStill);
+
+                    img.attr("data-animate", imageAnimate);
 
                     img.attr("alt", "" + topicName + " image");
 
@@ -79,10 +83,22 @@ $(document).ready(function () {
 
                     $("#topicImages").prepend(img, p);
 
-
                 }
 
+                $(".gif").on("clicked", function() {
 
+                    var state = $(this).attr("data-state");
+
+                    if (state === "still") {
+
+                        $(this).attr("src", $(this).attr("data-animate"));
+                        $(this).attr("data-state", "animate");
+                    } else {
+                        
+                    }
+                })
+
+                
             })
 
 
