@@ -57,9 +57,11 @@ $(document).ready(function () {
 
                 for (var j = 0; j < responseArray.length; j++) {
 
+                    
+
                     var imageStill = responseArray[j].images.original_still.url;
 
-                    var imageAnimate = responseArray[j].url;
+                    var imageAnimate = responseArray[j].images.original.url;
 
                     var imageRating = responseArray[j].rating;
 
@@ -85,27 +87,44 @@ $(document).ready(function () {
 
                 }
 
-                $(".gif").on("clicked", function() {
-
-                    var state = $(this).attr("data-state");
-
-                    if (state === "still") {
-
-                        $(this).attr("src", $(this).attr("data-animate"));
-                        $(this).attr("data-state", "animate");
-                    } else {
-                        
-                    }
-                })
-
-                
             })
-
 
     })
 
+     function gifState() {
+
+        var state = $(this).attr("data-state");
+
+        // console.log(state);
+
+        if (state === "still") {
+
+            $(this).attr("src", $(this).attr("data-animate"));
+
+            $(this).attr("data-state", "animate");
+
+            // console.log($(this).attr("src"));
+            
+            // console.log($(this).attr("data-state"));
+            
+
+        } else {
+
+            $(this).attr("src", $(this).attr("data-still"));
+
+            $(this).attr("data-state", "still");
+
+        }
+    }
+
+    $(document).on("click", ".gif", gifState);
 
 })
+
+
+
+
+
 
 
 
