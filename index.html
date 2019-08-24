@@ -5,21 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
     <title>GIPHY API</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
 
     <div class="container">
+        <div class="row">
+            <div class="col-lg-8" id="topicButtons">
+            </div>
+            <form class="col-lg-4 card" id="topic-form">
+                <div class="form-group">
+                    <label>Add New Topic</label>
+                    <input type="text" class="form-control" id="topic-input" placeholder="Enter Topic">
+                </div>
+                <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
 
-        <div id="topicButtons"></div>
+        <div class="row" id="topicImages"></div>
 
-        <div id="topicImages"></div>
-
-    </div>
-
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
 
 </body>
 
