@@ -32,7 +32,9 @@ $(document).ready(function () {
     renderButtons();
 
 
-    $(".topic").on("click", function (event) {
+    // $(".topic").on("click", function (event) {
+
+    function topicImages() {
 
         event.preventDefault();
 
@@ -113,16 +115,21 @@ $(document).ready(function () {
 
                 }
 
-            })
 
-    })
-   
+
+            })
+    }
+
 
     $("#submit").on("click", function (event) {
 
         event.preventDefault();
 
         var topic = $("#topic-input").val().trim();
+
+        if (topic == "") {
+            return false;
+        };
 
         topics.push(topic);
 
@@ -159,6 +166,9 @@ $(document).ready(function () {
 
 
     $(document).on("click", ".gif", gifState);
+
+    $(document).on("click", ".topic", topicImages);
+
 
 
 
