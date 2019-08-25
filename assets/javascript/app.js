@@ -20,19 +20,12 @@ $(document).ready(function () {
 
             $("#topicButtons").append(button);
 
-            // console.log(button.attr("data-name"));
-
-            // <button type="button" class="btn btn-light">Light</button>
-
         }
 
     }
 
-
     renderButtons();
 
-
-    // $(".topic").on("click", function (event) {
 
     function topicImages() {
 
@@ -42,11 +35,7 @@ $(document).ready(function () {
 
         var topicName = $(this).attr("data-name");
 
-        // console.log(topicName);
-
         var giphyURL = "https://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=CAXpgrXLq4SOSD1tjVIMhK4qHW7Mmxwv&limit=10"
-
-        // console.log(giphyURL);
 
         $.ajax({
             url: giphyURL,
@@ -58,13 +47,11 @@ $(document).ready(function () {
 
                 var responseArray = response.data;
 
-                // console.log(responseArray);
-
                 for (var j = 0; j < responseArray.length; j++) {
 
-                    var figureDiv = $("<figure>"); //new
+                    var figureDiv = $("<figure>");
 
-                    figureDiv.addClass("figure col-lg-3"); //new
+                    figureDiv.addClass("figure col-lg-3");
 
                     var imageStill = responseArray[j].images.original_still.url;
 
@@ -74,9 +61,7 @@ $(document).ready(function () {
 
                     var img = $("<img>");
 
-                    img.addClass("gif figure-img"); // new
-
-                    // img.addClass("gif col-lg-3 figure-img"); // old
+                    img.addClass("gif figure-img");
 
                     img.attr("src", imageStill);
 
@@ -88,36 +73,20 @@ $(document).ready(function () {
 
                     img.attr("alt", "" + topicName + " image");
 
-                    // var p = $("<p>");
-
-                    // p.text("Rating: " + imageRating.toUpperCase());
-
                     var figCaption = $("<figcaption>");
 
                     figCaption.addClass("figure-caption");
 
                     figCaption.text("Rating: " + imageRating.toUpperCase());
 
-                    figureDiv.append(img, figCaption); //new
-                    // figureDiv.append(figCaption);
+                    figureDiv.append(img, figCaption);
 
                     $("#topicImages").prepend(figureDiv);
 
-                    // $("#topicImages").prepend(img);
-
-                    // $("figure").prepend(img, figCaption);
-
-                    // $("figure").prepend(img); olddddddddd
-
-                    // $("<img>").text(figCaption);
-
-                    // $(".gif").append(p);
-
                 }
 
-
-
             })
+
     }
 
 
@@ -142,18 +111,11 @@ $(document).ready(function () {
 
         var state = $(this).attr("data-state");
 
-        // console.log(state);
-
         if (state === "still") {
 
             $(this).attr("src", $(this).attr("data-animate"));
 
             $(this).attr("data-state", "animate");
-
-            // console.log($(this).attr("src"));
-
-            // console.log($(this).attr("data-state"));
-
 
         } else {
 
@@ -162,21 +124,13 @@ $(document).ready(function () {
             $(this).attr("data-state", "still");
 
         }
+
     }
 
 
     $(document).on("click", ".gif", gifState);
 
     $(document).on("click", ".topic", topicImages);
-
-
-
-
-
-    // $(document).on("click", "#topicButtons", displayTopicInfo, gifState);
-
-    // $(".gif").on("click", gifState)
-
 
 
 })
